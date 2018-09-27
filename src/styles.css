@@ -1,77 +1,151 @@
-/* Shared */
-
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   padding: 0;
-  background: #eee;
-  font-family: sans-serif;
+  background: url("https://ef-englishfirst.ru/images/bg-black.jpg") repeat;
 }
 
-.container {
-  position: relative;
-  max-width: 800px;
+div#heroes_container {
   margin: 0 auto;
-  background: #fff;
-  border-radius: 3px;
+  width: 800px;
 }
 
-@media (min-width: 769px) {
-  .container {
-    margin: 2.5rem auto;
-  }
+.heroes_logo {
+  width: 323px;
+  height: 50px;
+  background: url("https://ef-englishfirst.ru/images/logo-ege-smaller.png")
+    no-repeat left top;
+  display: block;
+  margin: 38px 0px;
 }
 
-/* Result Component */
-.result {
-  padding: 1.5rem 2.5rem;
+div.inner {
+  display: block;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+div.inner .heroes_info {
+  width: 100%;
+  height: 450px;
+  position: relative;
+  opacity: 1;
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: 300;
 }
 
-/* Quiz Component */
-.answerOptions {
+div#root {
+  /* Animation */
+}
+div#root div.intruduction {
+  padding: 30px 40px;
+}
+div#root div.intruduction button {
+  border-radius: 25px;
+  padding: 23px 50px;
+  margin: 40px 0;
+  display: table;
+  color: #fff;
+  font-size: 21px;
+  line-height: 21px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: #e5321b;
+  background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%
+    ),
+    radial-gradient(
+      190% 100% at 50% 0%,
+      #e5321b 0%,
+      #e5321b 50%,
+      rgba(0, 0, 0, 0) 50%
+    );
+  background-repeat: no-repeat;
+  background-size: 200% 100%, auto;
+  background-position: 200% 0, 0 0;
+  margin-bottom: 35px;
+}
+div#root div.intruduction button:hover {
+  transition: 0.5s linear;
+  background-position: -200% 0, 0 0;
+}
+div#root .result {
+  padding: 30px 40px;
+}
+div#root .result button {
+  border-radius: 25px;
+  padding: 23px 50px;
+  margin: 40px 0;
+  display: table;
+  color: #fff;
+  font-size: 21px;
+  line-height: 21px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: #e5321b;
+  background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%
+    ),
+    radial-gradient(
+      190% 100% at 50% 0%,
+      #e5321b 0%,
+      #e5321b 50%,
+      rgba(0, 0, 0, 0) 50%
+    );
+  background-repeat: no-repeat;
+  background-size: 200% 100%, auto;
+  background-position: 200% 0, 0 0;
+  margin-bottom: 35px;
+}
+div#root .result button:hover {
+  transition: 0.5s linear;
+  background-position: -200% 0, 0 0;
+}
+div#root .answerOptions {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
-/* QuestionCount Component */
-.questionCount {
+div#root .questionCount {
   padding: 1.5rem 2.5rem 0;
   font-size: 14px;
 }
-
-/* Question Component */
-.question {
+div#root .question {
   margin: 0;
   padding: 0.5rem 2.5rem 1.5rem 2.5rem;
 }
-
-/* AnswerOption Component */
-.answerOption {
+div#root .answerOption {
   border-top: 1px solid #eee;
 }
-
-.answerOption:hover {
+div#root .answerOption:hover {
   background-color: #eefbfe;
 }
-
-.radioCustomButton {
+div#root .radioCustomButton {
   position: absolute;
   width: auto;
   opacity: 0;
 }
-
-.radioCustomButton,
-.radioCustomLabel {
+div#root .radioCustomButton,
+div#root .radioCustomLabel {
   display: inline-block;
   vertical-align: middle;
   cursor: pointer;
 }
-
-.radioCustomLabel {
+div#root .radioCustomLabel {
   position: relative;
   width: 100%;
   margin: 0;
@@ -79,8 +153,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
-
-.radioCustomButton ~ .radioCustomLabel:before {
+div#root .radioCustomButton ~ .radioCustomLabel:before {
   position: absolute;
   top: 20px;
   left: 38px;
@@ -94,42 +167,55 @@ body {
   border-radius: 50%;
   transition: all 0.3s;
 }
-
-.radioCustomButton:checked ~ .radioCustomLabel:before {
+div#root .radioCustomButton:checked ~ .radioCustomLabel:before {
   content: "";
-  background: #8bc53f url(./svg/icon-check.svg) no-repeat;
-  background-size: 27px;
+  background: #8bc53f url("https://ef-englishfirst.ru/images/check-white.png")
+    center no-repeat;
+  background-size: 18px;
   border-color: #8bc53f;
 }
-
-/* Animation */
-.fade-enter {
+div#root .fade-enter {
   opacity: 0;
 }
-
-.fade-enter.fade-enter-active {
+div#root .fade-enter.fade-enter-active {
   opacity: 1;
   transition: opacity 0.5s ease-in-out 0.3s;
 }
-
-.fade-leave {
+div#root .fade-leave {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   opacity: 1;
 }
-
-.fade-leave.fade-leave-active {
+div#root .fade-leave.fade-leave-active {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-
-.fade-appear {
+div#root .fade-appear {
   opacity: 0;
 }
-
-.fade-appear.fade-appear-active {
+div#root .fade-appear.fade-appear-active {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+
+@media (max-width: 800px) {
+  div#heroes_container {
+    width: 100%;
+  }
+
+  div.inner {
+    border-radius: 0;
+  }
+
+  .heroes_logo {
+    margin-left: 20px;
+  }
+
+  div#root .result button {
+    font-size: 18px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

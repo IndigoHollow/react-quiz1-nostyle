@@ -3,8 +3,10 @@ import React from "react";
 function Intruduction(props) {
   return (
     <div className="intruduction">
-      This is just an intruduction screen.
-      <button onClick={props.startTheQuiz}>Start the quiz</button>
+      Английский язык эффективнее изучать в среде, где он используется на
+      повседневной основе. Пройдите тест и узнайте в какой стране вам было бы
+      это делать не только эффективно, но и приятно!
+      <button onClick={props.startTheQuiz}>Пройти тест</button>
     </div>
   );
 }

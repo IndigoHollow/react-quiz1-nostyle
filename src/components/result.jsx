@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 function Result(props) {
   return (
     <div className="result">
-      You prefer: <strong>{props.quizResult}</strong>
-      <button onClick={props.restart}>Restart quiz</button>
+      Больше всего вам подойдет: <strong>{props.quizResult}</strong>
+      <button onClick={props.restart}>Пройти еще раз</button>
     </div>
   );
 }

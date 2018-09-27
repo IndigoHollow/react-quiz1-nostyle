@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Quiz from "./components/quiz";
-import quizQuestions from "./api/quizQuestions";
 import Result from "./components/result";
 import Intruduction from "./components/intruduction";
 
 import "./styles.css";
+
+let quizQuestions;
 
 class ReactQuiz extends React.Component {
   constructor(props) {
@@ -22,12 +23,26 @@ class ReactQuiz extends React.Component {
       answerOptions: [],
       answer: "",
       answersCount: {
-        nintendo: 0,
-        microsoft: 0,
-        sony: 0
+        австралия: 0,
+        англия: 0,
+        сша: 0
       },
       result: ""
     };
+  }
+
+  componentDidMount() {
+    const url = "https://demo4686640.mockable.io/quiz";
+
+    fetch(url)
+      .then(result => result.json())
+      .then(result => {
+        quizQuestions = result;
+        this.setState({
+          question: quizQuestions[0].question,
+          answerOptions: this.shuffleOptions([0])
+        });
+      });
   }
 
   shuffleOptions(question) {
@@ -38,10 +53,19 @@ class ReactQuiz extends React.Component {
     return shuffledAnswerOptions[question];
   }
 
-  componentDidMount() {
+  resetState() {
     this.setState({
+      counter: 0,
+      questionId: 1,
       question: quizQuestions[0].question,
-      answerOptions: this.shuffleOptions([0])
+      answerOptions: this.shuffleOptions([0]),
+      answer: "",
+      answersCount: {
+        австралия: 0,
+        англия: 0,
+        сша: 0
+      },
+      result: ""
     });
   }
 
@@ -107,7 +131,7 @@ class ReactQuiz extends React.Component {
 
   // Fisher–Yates shuffle
   shuffleArray(array) {
-    var currentIndex = array.length,
+    let currentIndex = array.length,
       temporaryValue,
       randomIndex;
 
@@ -124,19 +148,7 @@ class ReactQuiz extends React.Component {
   }
 
   handleOnRestart() {
-    this.setState({
-      counter: 0,
-      questionId: 1,
-      question: quizQuestions[0].question,
-      answerOptions: this.shuffleOptions([0]),
-      answer: "",
-      answersCount: {
-        nintendo: 0,
-        microsoft: 0,
-        sony: 0
-      },
-      result: ""
-    });
+    setTimeout(() => this.resetState(), 300);
   }
 
   renderIntruduction() {
